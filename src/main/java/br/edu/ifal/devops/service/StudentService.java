@@ -33,7 +33,7 @@ public class StudentService {
     public Student update(Long id, Student student) {
         Student studentModel = studentRepository.getReferenceById(id);
         updateData(studentModel,student);
-        return studentRepository.
+        return studentRepository.save(studentModel);
     }
 
     private void updateData(Student studentModel, Student student) {
