@@ -8,6 +8,9 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
 
+    env:
+      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+
     permissions:
       contents: read
       packages: write
@@ -34,3 +37,4 @@ jobs:
       - name: Push Docker image
         run: |
           docker push ghcr.io/${{ github.repository }}:${SHORT_SHA}
+          docker push ghcr.io/${{ github.repository }}:latest
