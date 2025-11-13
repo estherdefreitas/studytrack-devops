@@ -1,9 +1,13 @@
 #!/usr/bin/env sh
-set -eu
 
-# Lê a senha do secret e exporta para a variável que o Spring espera
+echo "JAVA_OPTS: $JAVA_OPTS"
+echo "Verificando Java:"
+java -version
+echo "Verificando JAR:"
+ls -l /app/app.jar
+
 if [ -f /run/secrets/db_secrets ]; then
-  export SPRING_DATASOURCE_PASSWORD="$(cat /run/secrets/db_secrets)"
+  export SPRING_DATASOURCE_PASSWORD="$(cat /app/secrets/db_secrets)"
 fi
 
-exec sh -c "java $JAVA_OPTS -jar /app/app.jar"
+exec java $JAVA_OPTS -jar /app/app.jar
