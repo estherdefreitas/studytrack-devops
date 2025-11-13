@@ -8,12 +8,11 @@ services:
     environment:
       POSTGRES_DB: ${DB}
       POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD_FILE: /run/secrets/db_secrets
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     secrets:
       - db_secrets
     volumes:
       - pg_data:/var/lib/postgresql/data
-      - secrets:/run/secrets
     networks:
       - app_net
     healthcheck:
@@ -33,12 +32,11 @@ services:
       JAVA_OPTS: ${JAVA_OPTS}
       SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
       SPRING_DATASOURCE_USERNAME: ${DB_USER}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
       SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE}
       JDBC_DRIVER: ${JDBC_DRIVER}
       JPA_DDL_AUTO: ${JPA_DDL_AUTO}
       JPA_SHOW_SQL: ${JPA_SHOW_SQL}
-    secrets:
-      - db_secrets
     networks:
       - app_net
     ports:
@@ -48,4 +46,3 @@ networks:
     driver: bridge
 volumes:
   pg_data:
-  secrets:

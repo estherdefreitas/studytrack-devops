@@ -10,7 +10,6 @@ RUN gradle clean bootJar --no-daemon
 FROM amazoncorretto:21-alpine
 WORKDIR /app
 COPY --from=build /app/build/libs/*.jar app.jar
-COPY secrets/db_secrets secrets/db_secrets
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 EXPOSE 8080
