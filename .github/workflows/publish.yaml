@@ -43,8 +43,8 @@ jobs:
 
       - name: Update Helm values with new image tag
         run: |
-          sed -i "s/^\(\s*tag:\s*\).*/\1${{ steps.vars.outputs.short_sha }}/" helm/values-dev.yaml
-          sed -i "s/^\(\s*tag:\s*\).*/\1${{ steps.vars.outputs.short_sha }}/" helm/values-prod.yaml
+          sed -i 's/^\(\s*tag:\s*\).*$/\1"'${{ steps.vars.outputs.short_sha }}'"/' helm/values-dev.yaml
+          sed -i 's/^\(\s*tag:\s*\).*$/\1"'${{ steps.vars.outputs.short_sha }}'"/' helm/values-prod.yaml
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add helm/values-dev.yaml
