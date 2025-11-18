@@ -34,7 +34,7 @@ O projeto servirá como base para as próximas etapas da disciplina, nas quais s
 | Containerização | Docker + Docker Compose             |
 | Versionamento     | Git + GitHub (repositório privado) |
 
-## ⚙️ [](https://)Como usar
+## ⚙️ Como usar
 
 - Para rodar:
 
@@ -76,8 +76,9 @@ kubectl apply -f db-operator/postgres-cluster-prod.yaml
   ```
   kubectl port-forward svc/studytrack-app-service -n studytrack-dev 8081:8080
   ```
-  
-  - Acesse em [https://localhost:8080](https://localhost:8080/)
+
+- Acesse em [https://localhost:8080](https://localhost:8080/)
+
 
 ## 🧾 Licença
 
