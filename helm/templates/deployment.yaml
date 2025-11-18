@@ -23,7 +23,7 @@ spec:
             - name: JAVA_OPTS
               value: "{{ .Values.env.JAVA_OPTS }}"
             - name: SPRING_DATASOURCE_URL
-              value: "jdbc:postgresql://postgres:{{ .Values.postgres.port }}/{{ .Values.postgres.db }}"
+              value: "jdbc:postgresql://{{ .Values.postgres.host }}:{{ .Values.postgres.port }}/{{ .Values.postgres.db }}"
             - name: SPRING_DATASOURCE_USERNAME
               valueFrom:
                 secretKeyRef:
