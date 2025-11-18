@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: 'https://github.com/estherdefreitas/studytrack-devops'
     targetRevision: HEAD
-    path: heml
+    path: helm
     helm:
       valueFiles:
         - values-prod.yaml
