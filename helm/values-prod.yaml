@@ -17,7 +17,8 @@ postgres:
   pvcSize: 1Gi
 
 service:
-  type: LoadBalancer
+  type: NodePort
+  nodePort: 30080
 
 env:
   JAVA_OPTS: "-Xms512m -Xmx1024m"
