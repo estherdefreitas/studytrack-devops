@@ -23,6 +23,7 @@ O projeto servirá como base para as próximas etapas da disciplina, nas quais s
 
 ## 🧩 Tecnologias Utilizadas
 
+
 | Categoria         | Tecnologia                          |
 | ----------------- | ----------------------------------- |
 | Linguagem         | Java 17+                            |
@@ -56,12 +57,13 @@ kubectl port-forward svc/argocd-server -n argocd 8080:443
 * Vá em **Settings > Repositories > Connect Repo using HTTPS**
 * Adicione:
   * URL: `https://github.com/estherdefreitas/studytrack-devops`
-  * (Se for privado, adicione usuário/token)
 
 - Depois rodar:
 
 ```
 kubectl apply -f https://raw.githubusercontent.com/cloudnative-pg/cloudnative-pg/release-1.21/releases/cnpg-1.21.0.yaml
+# kubectl apply -f db-operator/cnpg-1.21.0.yaml
+
 
 # aguardar um minuto pra rodar o próximo
 kubectl apply -f argocd/projects/studytrack-project.yaml -n argocd
@@ -72,13 +74,11 @@ kubectl apply -f db-operator/postgres-cluster-prod.yaml
 ```
 
 - Para acessar a aplicação:
-  
+
   ```
   kubectl port-forward svc/studytrack-app-service -n studytrack-dev 8081:8080
   ```
-
 - Acesse em [https://localhost:8080](https://localhost:8080/)
-
 
 ## 🧾 Licença
 
