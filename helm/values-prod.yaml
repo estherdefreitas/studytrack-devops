@@ -1,0 +1,23 @@
+# prod values
+namespace: studytrack-prod
+image:
+  repository: ghcr.io/estherdefreitas/studytrack-devops
+  tag: 1ba7723
+
+app:
+  port: 8080
+
+postgres:
+  image: postgres:16-alpine
+  port: 5432
+  db: studytrack-db-rw
+  user: produser
+  password: prodpassword
+  pvcSize: 1Gi
+
+service:
+  type: LoadBalancer
+
+env:
+  JAVA_OPTS: "-Xms512m -Xmx1024m"
+  SPRING_PROFILES_ACTIVE: prod

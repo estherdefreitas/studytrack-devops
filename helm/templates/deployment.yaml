@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: studytrack-app
+  namespace: {{ .Values.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "1" # Executa depois do job de migration
+spec:
+  selector:
+    matchLabels:
+      app: studytrack-app
+  template:
+    metadata:
+      labels:
+        app: studytrack-app
+    spec:
+      containers:
+        - name: studytrack-app
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          env:
+            - name: APP_PORT
+              value: "{{ .Values.app.port }}"
+            - name: JAVA_OPTS
+              value: "{{ .Values.env.JAVA_OPTS }}"
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://postgres:{{ .Values.postgres.port }}/{{ .Values.postgres.db }}"
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: db-secrets
+                  key: username
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-secrets
+                  key: password
+            - name: SPRING_PROFILES_ACTIVE
+              value: "{{ .Values.env.SPRING_PROFILES_ACTIVE }}"
+          ports:
+            - containerPort: {{ .Values.app.port }}
