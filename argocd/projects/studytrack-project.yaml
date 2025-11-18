@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: studytrack
+  namespace: argocd
+spec:
+  description: Projeto para aplicações StudyTrack dev e prod.
+  sourceRepos:
+    - 'https://github.com/estherdefreitas/studytrack-devops'
+  destinations:
+    - namespace: studytrack-dev
+      server: https://kubernetes.default.svc
+    - namespace: studytrack-prod
+      server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'

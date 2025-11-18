@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: studytrack-prod
+  namespace: argocd
+spec:
+  project: studytrack
+  source:
+    repoURL: 'https://github.com/estherdefreitas/studytrack-devops'
+    targetRevision: HEAD
+    path: heml
+    helm:
+      valueFiles:
+        - values-prod.yaml
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: studytrack-prod
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
