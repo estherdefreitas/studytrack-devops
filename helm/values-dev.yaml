@@ -21,6 +21,7 @@ postgres:
 service:
   type: NodePort
   nodePort: 30080
+  previewNodePort: 30081
 
 env:
   JAVA_OPTS: ""

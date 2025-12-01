@@ -8,6 +8,6 @@ spec:
   ports:
     - port: {{ .Values.app.previewPort }}
       targetPort: {{ .Values.app.previewPort }}
-      nodePort: {{ .Values.service.nodePort | default 30081 }}
+      nodePort: {{ .Values.service.previewNodePort | default 30081 }}
   selector:
     app: studytrack-app
