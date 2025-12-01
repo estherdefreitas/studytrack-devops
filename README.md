@@ -71,6 +71,8 @@ kubectl apply -f https://raw.githubusercontent.com/cloudnative-pg/cloudnative-pg
 kubectl apply -f argocd/projects/studytrack-project.yaml -n argocd
 kubectl apply -f argocd/apps/studytrack-dev.yaml -n argocd
 kubectl apply -f argocd/apps/studytrack-prod.yaml -n argocd
+kubectl create namespace studytrack-dev
+kubectl create namespace studytrack-prod
 kubectl apply -f db-operator/postgres-cluster-dev.yaml
 kubectl apply -f db-operator/postgres-cluster-prod.yaml
 ```
