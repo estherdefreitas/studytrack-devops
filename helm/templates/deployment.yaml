@@ -43,4 +43,4 @@ spec:
     blueGreen:
       activeService: studytrack-app-service
       previewService: studytrack-app-preview
-      autoPromotionEnabled: true
+      autoPromotionEnabled: false
