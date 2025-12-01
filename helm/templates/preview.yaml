@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: studytrack-app-preview
+  namespace: {{ .Values.namespace }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.app.previewPort }}
+      targetPort: {{ .Values.app.port }}
+      nodePort: {{ .Values.service.nodePort | default 30080 }}
+  selector:
+    app: studytrack-app
