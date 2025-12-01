@@ -51,7 +51,7 @@ kubectl port-forward svc/argocd-server -n argocd 8080:443
 - Acesse o Argo em [https://localhost:8080](https://localhost:8080/)
 - Consulte a senha em:
   ```
-  kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d && echo`
+  kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d && echo
   ```
 
 * Vá em **Settings > Repositories > Connect Repo using HTTPS**
@@ -75,8 +75,26 @@ kubectl apply -f db-operator/postgres-cluster-dev.yaml
 kubectl apply -f db-operator/postgres-cluster-prod.yaml
 ```
 
-- Para acessar a aplicação:
+- Para usar o ArgoRollouts
+  ```
+  kubectl create namespace argo-rollouts
+  kubectl apply -n argo-rollouts -f https://github.com/argoproj/argo-rollouts/releases/latest/download/install.yaml
+  ```
+- Para usar o ArgoDashboard
+  ```
+  kubectl apply -n argo-rollouts -f https://github.com/argoproj/argo-rollouts/releases/latest/download/dashboard-install.yaml
+  ```
+  * Para acessar o dashboard
+    ```
+    kubectl -n argo-rollouts port-forward deployment/argo-rollouts-dashboard 3100:3100
+    ```
+    * Acesse em [https://localhost:8080](https://localhost:3100/)
+  * Para aplicar o Blue/Green manualmente
+    ```
+    kubectl argo rollouts promote rollout/studytrack-app -n studytrack-dev
+    ```
 
+- Para acessar a aplicação
   ```
   kubectl port-forward svc/studytrack-app-service -n studytrack-dev 8081:8080
   ```
