@@ -93,6 +93,10 @@ kubectl apply -f db-operator/postgres-cluster-prod.yaml
     ```
     kubectl argo rollouts promote studytrack-app -n studytrack-dev
     ```
+    * Verificar o promote
+      ```
+      kubectl get rs -n studytrack-dev -l app=studytrack-app
+      ```
 
 - Para acessar a aplicação
   ```
