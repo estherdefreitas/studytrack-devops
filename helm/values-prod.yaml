@@ -20,7 +20,7 @@ postgres:
 
 service:
   type: NodePort
-  nodePort: 30081
+  nodePort: 30082
 
 env:
   JAVA_OPTS: "-Xms512m -Xmx1024m"
