@@ -6,7 +6,7 @@ image:
 
 app:
   port: 8080
-  replicas: 10
+  replicas: 2
 
 postgres:
   image: postgres:16-alpine
