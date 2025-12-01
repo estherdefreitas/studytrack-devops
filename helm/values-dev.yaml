@@ -6,7 +6,7 @@ image:
 
 app:
   port: 8080
-  previewPort: 8080
+  previewPort: 8083
   replicas: 2
 
 postgres:
