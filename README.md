@@ -61,8 +61,10 @@ kubectl port-forward svc/argocd-server -n argocd 8080:443
 - Depois rodar:
 
 ```
+kubectl apply -f db-operator/cnpg-1.21.0.yaml
+ou
 kubectl apply -f https://raw.githubusercontent.com/cloudnative-pg/cloudnative-pg/release-1.21/releases/cnpg-1.21.0.yaml
-# kubectl apply -f db-operator/cnpg-1.21.0.yaml
+
 
 
 # aguardar um minuto pra rodar o próximo
