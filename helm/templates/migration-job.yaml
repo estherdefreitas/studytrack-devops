@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: db-migration
+  generateName: db-migration-{{ .Values.image.tag }}-
   namespace: {{ .Values.namespace }}
   annotations:
     argocd.argoproj.io/sync-wave: "0" # Executa antes da app
