@@ -1,5 +1,5 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: studytrack-app
   namespace: {{ .Values.namespace }}
@@ -39,3 +39,8 @@ spec:
               value: "{{ .Values.env.SPRING_PROFILES_ACTIVE }}"
           ports:
             - containerPort: {{ .Values.app.port }}
+  strategy:
+    blueGreen:
+      activeService: studytrack-app-service
+      previewService: studytrack-app-preview
+      autoPromotionEnabled: true
