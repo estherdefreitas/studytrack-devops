@@ -25,3 +25,6 @@ service:
 env:
   JAVA_OPTS: "-Xms512m -Xmx1024m"
   SPRING_PROFILES_ACTIVE: prod
+
+strategy: canary
+environment: prod

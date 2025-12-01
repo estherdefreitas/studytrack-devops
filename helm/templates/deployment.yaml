@@ -40,7 +40,21 @@ spec:
           ports:
             - containerPort: {{ .Values.app.port }}
   strategy:
+    {{- if eq .Values.strategy "blueGreen"}}
     blueGreen:
       activeService: studytrack-app-service
+      {{- if eq .Values.environment "dev"}}
       previewService: studytrack-app-preview
+      {{- end}}
       autoPromotionEnabled: false
+    {{- else if eq .Values.strategy "canary"}}
+    canary:
+      steps:
+        - setWeight: 20
+        - pause: {duration: 10}
+        - setWeight: 50
+        - pause: {duration: 10}
+      maxSurge: 1
+      maxUnavailable: 0
+      stableService: studytrack-app-service
+    {{- end}}
