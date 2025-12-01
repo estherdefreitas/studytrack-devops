@@ -91,7 +91,7 @@ kubectl apply -f db-operator/postgres-cluster-prod.yaml
     * Acesse em [https://localhost:8080](https://localhost:3100/)
   * Para aplicar o Blue/Green manualmente
     ```
-    kubectl argo rollouts promote rollout/studytrack-app -n studytrack-dev
+    kubectl argo rollouts promote studytrack-app -n studytrack-dev
     ```
 
 - Para acessar a aplicação
