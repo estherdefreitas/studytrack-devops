@@ -51,7 +51,7 @@ spec:
     canary:
       steps:
         - setWeight: 20
-        - pause: {duration: 10}
+        - pause: {duration: 130}
         - setWeight: 50
         - pause: {duration: 10}
       maxSurge: 1
