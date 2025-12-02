@@ -68,11 +68,12 @@ kubectl apply -f https://raw.githubusercontent.com/cloudnative-pg/cloudnative-pg
 
 
 # aguardar um minuto pra rodar o próximo
+argocd repo add  https://github.com/estherdefreitas/studytrack-devops.git
 kubectl apply -f argocd/projects/studytrack-project.yaml -n argocd
 kubectl apply -f argocd/apps/studytrack-dev.yaml -n argocd
 kubectl apply -f argocd/apps/studytrack-prod.yaml -n argocd
-kubectl create namespace studytrack-dev
-kubectl create namespace studytrack-prod
+kubectl create namespace studytrack-dev && sleep 2 || true
+kubectl create namespace studytrack-prod && sleep 2 || true
 kubectl apply -f db-operator/postgres-cluster-dev.yaml
 kubectl apply -f db-operator/postgres-cluster-prod.yaml
 ```
