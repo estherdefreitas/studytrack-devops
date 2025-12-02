@@ -2,7 +2,7 @@
 namespace: studytrack-prod
 image:
   repository: ghcr.io/estherdefreitas/studytrack-devops
-  tag: "7469c77"
+  tag: "b0e11c5"
 
 app:
   port: 8080
