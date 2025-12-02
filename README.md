@@ -101,6 +101,8 @@ kubectl apply -f db-operator/postgres-cluster-prod.yaml
       kubectl get rs -n studytrack-dev -l app=studytrack-app
       ```
 
+
+
 - Para acessar a aplicação
   ```
   kubectl port-forward svc/studytrack-app-service -n studytrack-dev 8081:8080
